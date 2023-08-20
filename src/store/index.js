@@ -1,15 +1,9 @@
 import {createStore} from "@badm/react-store"
 import ContactsStore from "./contacts"
-import {AppStore} from "./app"
-import {configure} from "mobx"
-
-configure({
-  useProxies: "never",
-
-})
+import AppStore from "./app"
 
 export const store = createStore({
-  AppStore,
+  AppStore: new AppStore(),
   ContactsStore: new ContactsStore(),
 })
 

@@ -1,5 +1,15 @@
-import {observable} from "mobx"
+import {action, observable, reaction} from "mobx"
 
-export const AppStore = observable({
-  theme: observable.box("light")
-})
+class AppStore {
+  @observable
+  _theme = observable.box("light")
+
+  @action
+  getCurrentTheme() {
+    console.log(this._theme.get())
+    return this._theme.get()
+  }
+
+}
+
+export default AppStore
