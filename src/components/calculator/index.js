@@ -23,7 +23,7 @@ const onFinish = (values) => {
   const rate_pv = (after - inflation) / 12
   const period_pv = lifecycle - age
   const sum_pv = income * 12
-  results.need = pv(rate_pv, period_pv, -sum_pv, savings).toFixed(0)
+  results.need = pv(rate_pv, period_pv, -sum_pv, 0).toFixed(0)
 
 }
 
@@ -32,14 +32,14 @@ const InputNumberFull = styled(InputNumber)`
 `
 
 const initialValues = {
-  age: 46,
-  income: 3000,
-  savings: 20000,
-  contribution: 1000,
+  age: 40,
+  income: 10000,
+  savings: 100000,
+  contribution: 5000,
   retirement: 67,
   before: 0.06,
   after: 0.04,
-  lifecycle: 80,
+  lifecycle: 95,
   inflation: 0.03,
 }
 
@@ -79,7 +79,7 @@ const Calculator = observer(() => (
           </Form.Item>
 
           <Form.Item
-            label="Monthly income"
+            label="Monthly income nedded"
             name="income"
             rules={[
               {
