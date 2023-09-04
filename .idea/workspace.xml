@@ -53,7 +53,7 @@
       <recent name="$PROJECT_DIR$/static" />
     </key>
   </component>
-  <component name="RunManager" selected="npm.start">
+  <component name="RunManager" selected="npm.deploy">
     <configuration name="deploy" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -86,8 +86,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.deploy" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.predeploy" />
       </list>
     </recent_temporary>
@@ -104,6 +104,8 @@
       <workItem from="1692516122407" duration="5146000" />
       <workItem from="1692975196367" duration="824000" />
       <workItem from="1693127185030" duration="14832000" />
+      <workItem from="1693822683774" duration="24000" />
+      <workItem from="1693822712557" duration="2642000" />
     </task>
     <servers />
   </component>

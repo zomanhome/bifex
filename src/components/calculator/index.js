@@ -32,13 +32,14 @@ const InputNumberFull = styled(InputNumber)`
 `
 
 const initialValues = {
-  age: 40,
-  income: 10000,
-  savings: 100000,
-  contribution: 5000,
+  age: 35,
+  income: 60000,
+  savings: 30000,
+  contribution: 500,
   retirement: 67,
+  budget: 2561,
   before: 0.06,
-  after: 0.04,
+  after: 0.05,
   lifecycle: 95,
   inflation: 0.03,
 }
@@ -49,17 +50,17 @@ const Calculator = observer(() => (
 
     <Divider/>
 
-    <Row gutter={16}>
 
-      <Col span={9}>
-        <Form
-          name="bifex"
-          labelCol={{span: 12}}
-          wrapperCol={{span: 12}}
-          initialValues={initialValues}
-          onFinish={onFinish}
-          autoComplete="off"
-        >
+    <Form
+      name="bifex"
+      labelCol={{span: 12}}
+      wrapperCol={{span: 12}}
+      initialValues={initialValues}
+      onFinish={onFinish}
+      autoComplete="off"
+    >
+      <Row gutter={16}>
+        <Col span={8}>
           <Form.Item
             label="Current age"
             name="age"
@@ -135,6 +136,26 @@ const Calculator = observer(() => (
           </Form.Item>
 
           <Form.Item
+            label="Monthly budget in retirement"
+            name="budget"
+            rules={[
+              {
+                required: true,
+                message: "Require!",
+              },
+            ]}
+          >
+            <InputNumberFull
+              controls={false}
+              formatter={CurrencyFormatter}
+              prefix={<DollarOutlined/>}
+              suffix={"USD"}
+            />
+          </Form.Item>
+        </Col>
+        <Col span={8}>
+
+          <Form.Item
             label="Life expectancy"
             name="lifecycle"
           >
@@ -197,24 +218,29 @@ const Calculator = observer(() => (
               prefix={<ScheduleOutlined/>}
             />
           </Form.Item>
+        </Col>
+      </Row>
 
+      <Row>
+        <Col>
           <Form.Item>
             <Button type="primary" htmlType="submit">
               Calculate my retirement
             </Button>
           </Form.Item>
-        </Form>
-      </Col>
+        </Col>
+      </Row>
+    </Form>
 
-      {!!results.have && !!results.need && <Col span={15}>
-        <Alert style={{width: "100%"}} type="info" message={`What you'll have: ${CurrencyFormatter(results.have)}`}/>
-        <Divider/>
-        <Alert type="warning" message={`What you'll need: ${CurrencyFormatter(results.need)}`}/>
-      </Col>}
-
-    </Row>
-
-
+    {!!results.have && !!results.need &&
+      <Row gutter={16}>
+        <Col span={8}>
+          <Alert style={{width: "100%"}} type="info" message={`What you'll have: ${CurrencyFormatter(results.have)}`}/>
+        </Col>
+        <Col span={8}>
+          <Alert type="warning" message={`What you'll need: ${CurrencyFormatter(results.need)}`}/>
+        </Col>
+      </Row>}
   </>
 
 ))
